@@ -8,8 +8,8 @@ import android.preference.PreferenceManager;
  * Gère les SharedPreferences
  */
 public class PrefManager {
-    private SharedPreferences pref_tuto;
-    private SharedPreferences.Editor editor_tuto;
+    private final SharedPreferences pref_tuto;
+    private final SharedPreferences.Editor editor_tuto;
 
     // Nom des SharedPreferences
 

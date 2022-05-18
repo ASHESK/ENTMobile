@@ -65,10 +65,10 @@ public class TutoActivity extends AppCompatActivity {
 
             setContentView(R.layout.activity_tuto);
 
-            viewPager = (ViewPager) findViewById(R.id.view_pager);
-            dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
-            btnSkip = (Button) findViewById(R.id.btn_skip);
-            btnNext = (Button) findViewById(R.id.btn_next);
+            viewPager = findViewById(R.id.view_pager);
+            dotsLayout = findViewById(R.id.layoutDots);
+            btnSkip = findViewById(R.id.btn_skip);
+            btnNext = findViewById(R.id.btn_next);
 
 
             // layouts of all welcome sliders
@@ -129,10 +129,10 @@ public class TutoActivity extends AppCompatActivity {
 
             setContentView(R.layout.activity_tuto);
 
-            viewPager = (ViewPager) findViewById(R.id.view_pager);
-            dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
-            btnSkip = (Button) findViewById(R.id.btn_skip);
-            btnNext = (Button) findViewById(R.id.btn_next);
+            viewPager = findViewById(R.id.view_pager);
+            dotsLayout = findViewById(R.id.layoutDots);
+            btnSkip = findViewById(R.id.btn_skip);
+            btnNext = findViewById(R.id.btn_next);
 
 
             // layouts of all welcome sliders
@@ -192,10 +192,10 @@ public class TutoActivity extends AppCompatActivity {
 
             setContentView(R.layout.activity_tuto);
 
-            viewPager = (ViewPager) findViewById(R.id.view_pager);
-            dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
-            btnSkip = (Button) findViewById(R.id.btn_skip);
-            btnNext = (Button) findViewById(R.id.btn_next);
+            viewPager = findViewById(R.id.view_pager);
+            dotsLayout = findViewById(R.id.layoutDots);
+            btnSkip = findViewById(R.id.btn_skip);
+            btnNext = findViewById(R.id.btn_next);
 
 
             // layouts of all welcome sliders
@@ -255,10 +255,10 @@ public class TutoActivity extends AppCompatActivity {
 
             setContentView(R.layout.activity_tuto);
 
-            viewPager = (ViewPager) findViewById(R.id.view_pager);
-            dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
-            btnSkip = (Button) findViewById(R.id.btn_skip);
-            btnNext = (Button) findViewById(R.id.btn_next);
+            viewPager = findViewById(R.id.view_pager);
+            dotsLayout = findViewById(R.id.layoutDots);
+            btnSkip = findViewById(R.id.btn_skip);
+            btnNext = findViewById(R.id.btn_next);
 
 
             // layouts of all welcome sliders
