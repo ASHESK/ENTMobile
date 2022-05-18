@@ -1,0 +1,171 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" translatable="false">ENT Mobile</string>
+
+    <!-- MainMenu -->
+    <string name="home">Home</string>
+    <string name="mails">Mails</string>
+    <string name="settings">Settings</string>
+    <string name="log_off">LOG OFF</string>
+    <string name="schedule">Schedule</string>
+    <string name="modules">Modules</string>
+    <string name="links">Links</string>
+    <string name="notes">Notes</string>
+    <string name="results">Results</string>
+    <string name="umtice" translatable="false">UMTICE</string>
+    <string name="ent" translatable="false">ENT</string>
+
+    <!-- Login -->
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">LOG IN</string>
+    <string name="createAccount">Create Account</string>
+
+    <!-- New acount -->
+    <string name="newAccount">NEW ACCOUNT</string>
+    <string name="group">Group</string>
+    <string name="mail">Mail</string>
+    <string name="validate">Validate</string>
+    <string name="back_to_login">Back to Log In</string>
+    <string name="wrong_pass_error">Incorrect password.</string>
+    <string name="wrong_username_error">Incorrect username.</string>
+    <string name="unmatch_pass_error">The passwords do not match</string>
+    <string name="empty_pass_error">The passwords cannot be left blank</string>
+
+    <!-- Schedule -->
+    <string-array name="months">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>Mai</item>
+        <item>Jun</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+    <string name="location">Location</string>
+    <string name="teacher">Teacher(s)</string>
+    <string name="student">Students</string>
+    <string name="logo_iut_content_desc">LAVAL IUT\'s logo</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Settings-->
+    <string name="settings_account_header">Account</string>
+    <string name="settings_edit_text_username">Username</string>
+    <string name="settings_edit_text_password">Password</string>
+
+    <string name="settings_app_header">App</string>
+    <string name="settings_list_language">Language</string>
+    <string name="condition_example_title">Autofill username</string>
+    <string name="dependency_example_on">Yes</string>
+    <string name="dependency_example_off">No</string>
+
+
+    <!-- Notes -->
+
+    <string name="action_settings">Settings</string>
+    <string name="delete">DELETE</string>
+
+    <!-- Mails -->
+
+    <string name="activity_name">Mails</string>
+    <string name="action_search">Search</string>
+    <string name="action_delete">Delete</string>
+    <string name="autofill_username">Autofill username</string>
+
+
+    <!-- Résultats -->
+    <string name="title_s1">S1</string>
+    <string name="title_s2">S2</string>
+    <string name="title_s3">S3</string>
+    <string name="title_s4">S4</string>
+    <string name="note_et">" note"</string>
+    <string name="notes_et">" notes"</string>
+    <string name="coefs">Coefs</string>
+    <string name="grades">Grades</string>
+    <string name="global">Global</string>
+    <string name="ue11" translatable="false">UE11</string>
+    <string name="ue12" translatable="false">UE12</string>
+    <string name="ue21" translatable="false">UE21</string>
+    <string name="ue22" translatable="false">UE22</string>
+    <string name="ue31" translatable="false">UE31</string>
+    <string name="ue32" translatable="false">UE32</string>
+    <string name="ue33" translatable="false">UE33</string>
+    <string name="ue41" translatable="false">UE41</string>
+    <string name="ue42" translatable="false">UE42</string>
+    <string name="ue43" translatable="false">UE43</string>
+    <string name="averages">Averages</string>
+    <string name="copyright">Copyright © 2021 ENT Mobile All rights reserved.</string>
+    <string name="app_version">Version v1.0.0 public</string>
+    <string name="category">Category : </string>
+    <string name="notes_editor_save">SAVE</string>
+    <string name="notes_editor_title">Title</string>
+    <string name="notes_editor_content">Content</string>
+    <string name="notes_displayed_cat">Displayed categories</string>
+    <string name="ok">OK</string>
+    <string name="remove">DELETE</string>
+    <string name="add">ADD</string>
+    <string name="notes_remove_cat">Delete a category</string>
+    <string name="cancel">CANCEL</string>
+    <string name="notes_new_cat">New category</string>
+    <string name="name">Name</string>
+    <string name="notes_no_cat">There are no categories</string>
+    <string name="notes_editor_choose_cat">Choose a category</string>
+    <string name="notes_editor_fill_note">You need to fill the note.</string>
+    <string name="notes_editor_set_title">You need to set a title.</string>
+    <string name="undo">UNDO</string>
+    <string name="notes_was_deleted">\" was deleted !</string>
+    <string name="notes_delete_all_wrng_msg_1">You\'re about to delete all notes saved on this device.</string>
+    <string name="notes_delete_all_wrng_msg_2">Do you want to continue?</string>
+    <string name="log_out">Log out</string>
+    <string name="log_out_msg">Do you really want to log out?</string>
+    <string name="exit">Exit?</string>
+    <string name="exit_msg">Are you sure you want to exit?</string>
+
+    <string name="create_acc_wrng_msg_1">There already is an account on this device.</string>
+    <string name="create_acc_wrng_msg_2">Creating a new account will result in the loss of all previously saved data on this app.</string>
+    <string name="create_acc_missing_pass">The password is missing.</string>
+    <string name="create_acc_pass_mismatch">The passwords entered do not match.</string>
+    <string name="create_acc_missing_username">The username is missing.</string>
+    <string name="settings_tutorials_header">Tutorials</string>
+    <string name="settings_result_tutorial">Results tutorial</string>
+    <string name="settings_notes_tutorial">Notes tutorial</string>
+    <string name="settings_mail_tutorial">Mails tutorial</string>
+    <string name="settings_schedule_tutorial">Schedule tutorial</string>
+
+
+    <string name="warning">Warning !</string>
+    <string name="wrng_continue">Do you want to continue?</string>
+    <string name="tuto_result_slide1_title">Look at the modules.</string>
+    <string name="tuto_result_slide2_title">Different semesters !</string>
+    <string name="tuto_result_slide1_content">Swipe up to see all the modules in the semester !</string>
+    <string name="tuto_result_slide2_content">Browse through the different semesters to access the modules for each of them !</string>
+    <string name="tuto_result_slide3_content">Fill the grades and the coeficients by clicking on them. Your average will automatically be calculated !</string>
+    <string name="tuto_result_slide3_title">Fill the notes and the coeficients.</string>
+
+
+    <string name="start">Start</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="tuto_note_slide1_title">Manage your notes !</string>
+    <string name="tuto_note_slide1_content">Manage the notes with the buttons at the top of the screen.</string>
+    <string name="tuto_note_slide2_title">Manage your categories !</string>
+    <string name="tuto_note_slide2_content">Create, remove, or select a category with the Categories button.</string>
+    <string name="tuto_note_slide3_title">Browse your notes !</string>
+    <string name="tuto_note_slide3_content">Browse the notes you have created.</string>
+    <string name="tuto_note_slide4_title">Delete notes individually.</string>
+    <string name="tuto_note_slide4_content">Swipe on a note to delete it.</string>
+    <string name="there_are_currently_no_notes">There are currently no notes.</string>
+    <string name="tuto_mails_slide1_title">Simple click</string>
+    <string name="tuto_mails_slide2_title">Hold on it</string>
+    <string name="tuto_mails_slide2_content">A mail can be selected by holding your finger on it.</string>
+    <string name="tuto_mails_slide1_content">A mail can be marked as read by clicking on it.</string>
+    <string name="tuto_schedule_slide2_content">Click on the current date to open the calendar !</string>
+    <string name="tuto_schedule_slide2_title">Jump to any date !</string>
+    <string name="tuto_schedule_slide1_title">Navigate day to day !</string>
+    <string name="tuto_schedule_slide1_content">Use the arrows to get back to the current day !</string>
+
+</resources>

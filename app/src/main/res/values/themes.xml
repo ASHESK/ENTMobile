@@ -1,0 +1,11 @@
+<resources>
+
+    <style name="Theme.ENTMobile.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.ENTMobile.AppBarOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.ENTMobile.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

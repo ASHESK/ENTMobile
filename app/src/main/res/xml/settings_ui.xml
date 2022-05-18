@@ -1,0 +1,41 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/settings_account_header">
+
+        <EditTextPreference
+            android:id="@+id/username_edit_text"
+            android:inputType="text"
+            app:key="username"
+            app:title="@string/settings_edit_text_username"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            android:id="@+id/password_edit_text"
+            android:inputType="textPassword"
+            app:key="password"
+            app:title="@string/settings_edit_text_password"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/settings_app_header">
+
+        <ListPreference
+            app:defaultValue="english"
+            app:entries="@array/reply_entries"
+            app:entryValues="@array/reply_values"
+            app:key="loc"
+            app:title="@string/settings_list_language"
+            app:useSimpleSummaryProvider="true" />
+
+        <SwitchPreferenceCompat
+            app:key="autofill"
+            app:title="@string/condition_example_title" />
+
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/settings_tutorials_header">
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
