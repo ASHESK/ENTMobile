@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/home"
-                android:textColor="#E91E63"
+                android:textColor="@color/colorAccent"
                 android:textSize="36sp"
                 android:textStyle="bold" />
 

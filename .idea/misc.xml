@@ -4,6 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Projects/Android/ENTMobile/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.197" />
+        <entry key="..\:/Projects/Android/ENTMobile/app/src/main/res/drawable/app_res_bg_login.xml" value="0.197" />
+        <entry key="..\:/Projects/Android/ENTMobile/app/src/main/res/layout/activity_create_account.xml" value="0.1890625" />
+        <entry key="..\:/Projects/Android/ENTMobile/app/src/main/res/layout/activity_login.xml" value="0.1890625" />
+        <entry key="..\:/Projects/Android/ENTMobile/app/src/main/res/layout/activity_mail_viewer.xml" value="0.36666666666666664" />
+        <entry key="..\:/Projects/Android/ENTMobile/app/src/main/res/layout/activity_mails.xml" value="0.36666666666666664" />
+        <entry key="..\:/Projects/Android/ENTMobile/app/src/main/res/layout/activity_main_menu.xml" value="0.1890625" />
+        <entry key="..\:/Projects/Android/ENTMobile/app/src/main/res/layout/schedule_activity.xml" value="0.36666666666666664" />
         <entry key="..\:/Projects/Android/ENTMobile/app/src/main/res/menu/bottom_nav_menu.xml" value="0.18854166666666666" />
         <entry key="..\:/Projects/Android/ENTMobile/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1965" />
         <entry key="..\:/Projects/Android/ENTMobile/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1965" />

@@ -153,7 +153,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="@string/createAccount"
-            android:textColor="#E91E63" />
+            android:textColor="@color/colorAccent" />
 
     </LinearLayout>
 
