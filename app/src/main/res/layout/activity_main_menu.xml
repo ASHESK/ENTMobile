@@ -153,13 +153,13 @@
                         android:textSize="18sp" />
 
                     <Button
-                        android:id="@+id/button_results"
+                        android:id="@+id/button_messages"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:minWidth="100dip"
                         android:minHeight="100dip"
-                        android:text="@string/results"
+                        android:text="@string/messages"
                         android:textColor="#2196F3"
                         android:textSize="18sp" />
 

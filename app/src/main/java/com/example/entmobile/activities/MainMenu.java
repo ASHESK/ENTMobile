@@ -14,10 +14,6 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.entmobile.R;
-import com.example.entmobile.mails.MailViewerActivity;
-import com.example.entmobile.notes.NotesActivity;
-import com.example.entmobile.results.ResultsActivity;
-import com.example.entmobile.schedule.Schedule;
 
 import java.util.Locale;
 
@@ -34,7 +30,7 @@ public class MainMenu extends AppCompatActivity {
     private Button button_schedule; //Button used to launch the "openSchedule()" method.
     private Button button_mails; //Button used to launch the "openMails()" method.
     private Button button_notes; //Button used to launch the "openNotes()" method.
-    private Button button_results; //Button used to launch the "openResults()" method.
+    private Button button_messages; //Button used to launch the "openResults()" method.
 
     private final static int EXIT_CODE = 100; // code used to finish this activity
 
@@ -49,7 +45,7 @@ public class MainMenu extends AppCompatActivity {
         button_schedule = findViewById(R.id.button_schedule);
         button_mails = findViewById(R.id.button_mails);
         button_notes = findViewById(R.id.button_notes);
-        button_results = findViewById(R.id.button_results);
+        button_messages = findViewById(R.id.button_messages);
         button_umtice = findViewById(R.id.button_umtice);
         button_ent = findViewById(R.id.button_ent);
 
@@ -93,11 +89,11 @@ public class MainMenu extends AppCompatActivity {
             }
         });
 
-        //Set a listener on the Results button
-        button_results.setOnClickListener(new View.OnClickListener() {
+        //Set a listener on the Messages button
+        button_messages.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openResults();
+                openMessages();
             }
         });
 
@@ -124,6 +120,40 @@ public class MainMenu extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         openLogInMenu();
+    }
+
+    /**
+     * Method used to finish the MainMenu Activity and disabled the back pressed button
+     *
+     * @param requestCode the request code of this activity
+     * @param resultCode  the result of the Login Activity to finish the MainMenu Activity
+     * @param data        the boolean to finish the MainMenu Activity
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == EXIT_CODE) {
+            if (resultCode == RESULT_OK) {
+                if (data.getBooleanExtra("EXIT", true)) {
+                    finish();
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this); //Initializes the SharedPreferences
+        String current_lang = preferences.getString("loc", ""); // prefered language
+
+        // if language is not same as in preferences
+        if (!current_lang.equals(Locale.getDefault().toString())) {
+            // change to language in preferences
+            Settings.setLocale(getResources(), current_lang);
+            recreate();
+        }
     }
 
     /**
@@ -185,11 +215,11 @@ public class MainMenu extends AppCompatActivity {
     }
 
     /**
-     * Method used to open the Results page
+     * Method used to open the Messages page
      */
-    private void openResults() {
+    private void openMessages() {
         Intent intent = new Intent(this, TutoActivity.class);
-        intent.putExtra("Name", "Results");
+        intent.putExtra("Name", "Messages");
         intent.putExtra("Launch", true);
         startActivity(intent);
     }
@@ -217,39 +247,5 @@ public class MainMenu extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_VIEW); //Creates a new intent of type Action_View
         intent.setData(Uri.parse(url)); //Set the intent's data to the parsed UMTICE URL
         startActivity(intent); //Starts a new activity with the intent
-    }
-
-    /**
-     * Method used to finish the MainMenu Activity and disabled the back pressed button
-     *
-     * @param requestCode the request code of this activity
-     * @param resultCode  the result of the Login Activity to finish the MainMenu Activity
-     * @param data        the boolean to finish the MainMenu Activity
-     */
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == EXIT_CODE) {
-            if (resultCode == RESULT_OK) {
-                if (data.getBooleanExtra("EXIT", true)) {
-                    finish();
-                }
-            }
-        }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this); //Initializes the SharedPreferences
-        String current_lang = preferences.getString("loc", ""); // prefered language
-
-        // if language is not same as in preferences
-        if (!current_lang.equals(Locale.getDefault().toString())) {
-            // change to language in preferences
-            Settings.setLocale(getResources(), current_lang);
-            recreate();
-        }
     }
 }

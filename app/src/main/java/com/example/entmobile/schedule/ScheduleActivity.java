@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * The main class for the schedule module
  */
-public class Schedule extends AppCompatActivity {
+public class ScheduleActivity extends AppCompatActivity {
     RecyclerView scheduleView;
 
     ArrayList<Course> courses;

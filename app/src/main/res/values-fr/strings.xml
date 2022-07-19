@@ -8,7 +8,7 @@
     <string name="modules">Modules</string>
     <string name="links">Liens</string>
     <string name="notes">Notes</string>
-    <string name="results">Résultats</string>
+    <string name="messages">Messages</string>
     <string name="username">Pseudonyme</string>
     <string name="password">Mot de passe</string>
     <string name="login">SE CONNECTER</string>
@@ -121,4 +121,8 @@
     <string name="tuto_mails_slide1_content">Un mail peut être ouvert avec une courte pression.</string>
     <string name="tuto_mails_slide2_title">Longue pression</string>
     <string name="tuto_mails_slide2_content">Un mail peut être sélectionné sous l\'effet d\'une longue pression.</string>
+    <string name="messages_count">" messages"</string>
+    <string name="notes_count">notes</string>
+    <string name="message_et">" message"</string>
+    <string name="messages_et">" messages"</string>
 </resources>

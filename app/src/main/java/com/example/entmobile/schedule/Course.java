@@ -1,9 +1,6 @@
 package com.example.entmobile.schedule;
 
 import android.os.Build;
-import android.util.Log;
-
-import androidx.annotation.RequiresApi;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -183,7 +180,7 @@ public class Course {
     }
 
     public String[] getInfos() {
-        return new String[]{Schedule.getHourFormated(start), Schedule.getHourFormated(end), courseName, room};
+        return new String[]{ScheduleActivity.getHourFormated(start), ScheduleActivity.getHourFormated(end), courseName, room};
     }
 
     public String[] getTotalInfos() {
@@ -206,8 +203,8 @@ public class Course {
                 ", room='" + room + '\'' +
                 ", teacher='" + teacher + '\'' +
                 ", groupe='" + groupAttending + '\'' +
-                ", start='" + Schedule.getDateFormated(start) + " " + Schedule.getHourFormated(start) + '\'' +
-                ", end='" + Schedule.getDateFormated(end) + " " + Schedule.getHourFormated(end) + '\'' +
+                ", start='" + ScheduleActivity.getDateFormated(start) + " " + ScheduleActivity.getHourFormated(start) + '\'' +
+                ", end='" + ScheduleActivity.getDateFormated(end) + " " + ScheduleActivity.getHourFormated(end) + '\'' +
                 ", duration='" + duration + '\'' +
                 '}';
     }

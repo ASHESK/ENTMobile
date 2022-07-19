@@ -23,7 +23,8 @@ import com.example.entmobile.R;
 import com.example.entmobile.mails.MailViewerActivity;
 import com.example.entmobile.notes.NotesActivity;
 import com.example.entmobile.results.ResultsActivity;
-import com.example.entmobile.schedule.Schedule;
+import com.example.entmobile.schedule.ScheduleActivity;
+import com.example.entmobile.messages.MessagesActivity;
 
 public class TutoActivity extends AppCompatActivity {
 
@@ -49,260 +50,304 @@ public class TutoActivity extends AppCompatActivity {
         String nameOfActivity = intent.getStringExtra("Name");
         launchActivity = intent.getBooleanExtra("Launch", false);
 
-        /**
-         * Regarde les SharedPreferences et lance le tuto s'il n'a jamais été lancé. Sinon va sur l'activité des Notes
-         */
-        if (!prefManager.isNotesFirstTimeLaunch() && nameOfActivity.equals("Notes")) {
-            launchNotesActivityOrNot();
-            finish();
-        }
-        if (prefManager.isNotesFirstTimeLaunch() && nameOfActivity.equals("Notes")) {
-
-            // Making notification bar transparent
-            if (Build.VERSION.SDK_INT >= 21) {
-                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-            }
-
-            setContentView(R.layout.activity_tuto);
-
-            viewPager = findViewById(R.id.view_pager);
-            dotsLayout = findViewById(R.id.layoutDots);
-            btnSkip = findViewById(R.id.btn_skip);
-            btnNext = findViewById(R.id.btn_next);
-
-
-            // layouts of all welcome sliders
-            // add few more layouts if you want
-            layouts = new int[]{
-                    R.layout.tuto_note_slide1,
-                    R.layout.tuto_note_slide2,
-                    R.layout.tuto_note_slide3,
-                    R.layout.tuto_note_slide4};
-
-            // adding bottom dots
-            addBottomDots(0);
-
-            // making notification bar transparent
-            changeStatusBarColor();
-
-            myViewPagerAdapter = new MyViewPagerAdapter();
-            viewPager.setAdapter(myViewPagerAdapter);
-            viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
-
-            btnSkip.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        switch (nameOfActivity) {
+            case "Notes" :
+                if (!prefManager.isNotesFirstTimeLaunch()) {
                     launchNotesActivityOrNot();
                 }
-            });
-
-            btnNext.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // checking for last page
-                    // if last page home screen will be launched
-                    int current = getItem(+1);
-                    if (current < layouts.length) {
-                        // move to next screen
-                        viewPager.setCurrentItem(current);
-                    } else {
-                        launchNotesActivityOrNot();
+                else {
+                    // Making notification bar transparent
+                    if (Build.VERSION.SDK_INT >= 21) {
+                        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
                     }
+
+                    setContentView(R.layout.activity_tuto);
+
+                    viewPager = findViewById(R.id.view_pager);
+                    dotsLayout = findViewById(R.id.layoutDots);
+                    btnSkip = findViewById(R.id.btn_skip);
+                    btnNext = findViewById(R.id.btn_next);
+
+
+                    // layouts of all welcome sliders
+                    // add few more layouts if you want
+                    layouts = new int[]{
+                            R.layout.tuto_note_slide1,
+                            R.layout.tuto_note_slide2,
+                            R.layout.tuto_note_slide3,
+                            R.layout.tuto_note_slide4};
+
+                    // adding bottom dots
+                    addBottomDots(0);
+
+                    // making notification bar transparent
+                    changeStatusBarColor();
+
+                    myViewPagerAdapter = new MyViewPagerAdapter();
+                    viewPager.setAdapter(myViewPagerAdapter);
+                    viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
+
+                    btnSkip.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            launchNotesActivityOrNot();
+                        }
+                    });
+
+                    btnNext.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // checking for last page
+                            // if last page home screen will be launched
+                            int current = getItem(+1);
+                            if (current < layouts.length) {
+                                // move to next screen
+                                viewPager.setCurrentItem(current);
+                            } else {
+                                launchNotesActivityOrNot();
+                            }
+                        }
+                    });
                 }
-            });
+                break;
 
-        }
-
-        /**
-         * Regarde les SharedPreferences et lance le tuto s'il n'a jamais été lancé. Sinon va sur l'activité de l'Emploi du temps
-         */
-        if (!prefManager.isScheduleFirstTimeLaunch() && nameOfActivity.equals("Schedule")) {
-            launchScheduleActivityOrNot();
-            finish();
-        }
-        if (prefManager.isScheduleFirstTimeLaunch() && nameOfActivity.equals("Schedule")) {
-
-            // Making notification bar transparent
-            if (Build.VERSION.SDK_INT >= 21) {
-                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-            }
-
-            setContentView(R.layout.activity_tuto);
-
-            viewPager = findViewById(R.id.view_pager);
-            dotsLayout = findViewById(R.id.layoutDots);
-            btnSkip = findViewById(R.id.btn_skip);
-            btnNext = findViewById(R.id.btn_next);
-
-
-            // layouts of all welcome sliders
-            // add few more layouts if you want
-            layouts = new int[]{
-                    R.layout.tuto_schedule_slide1,
-                    R.layout.tuto_schedule_slide2};
-
-            // adding bottom dots
-            addBottomDots(0);
-
-            // making notification bar transparent
-            changeStatusBarColor();
-
-            myViewPagerAdapter = new MyViewPagerAdapter();
-            viewPager.setAdapter(myViewPagerAdapter);
-            viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
-
-            btnSkip.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+            case "Schedule" :
+                if (!prefManager.isScheduleFirstTimeLaunch()) {
                     launchScheduleActivityOrNot();
                 }
-            });
-
-            btnNext.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // checking for last page
-                    // if last page home screen will be launched
-                    int current = getItem(+1);
-                    if (current < layouts.length) {
-                        // move to next screen
-                        viewPager.setCurrentItem(current);
-                    } else {
-                        launchScheduleActivityOrNot();
+                else {
+                    // Making notification bar transparent
+                    if (Build.VERSION.SDK_INT >= 21) {
+                        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
                     }
+
+                    setContentView(R.layout.activity_tuto);
+
+                    viewPager = findViewById(R.id.view_pager);
+                    dotsLayout = findViewById(R.id.layoutDots);
+                    btnSkip = findViewById(R.id.btn_skip);
+                    btnNext = findViewById(R.id.btn_next);
+
+
+                    // layouts of all welcome sliders
+                    // add few more layouts if you want
+                    layouts = new int[]{
+                            R.layout.tuto_schedule_slide1,
+                            R.layout.tuto_schedule_slide2};
+
+                    // adding bottom dots
+                    addBottomDots(0);
+
+                    // making notification bar transparent
+                    changeStatusBarColor();
+
+                    myViewPagerAdapter = new MyViewPagerAdapter();
+                    viewPager.setAdapter(myViewPagerAdapter);
+                    viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
+
+                    btnSkip.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            launchScheduleActivityOrNot();
+                        }
+                    });
+
+                    btnNext.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // checking for last page
+                            // if last page home screen will be launched
+                            int current = getItem(+1);
+                            if (current < layouts.length) {
+                                // move to next screen
+                                viewPager.setCurrentItem(current);
+                            } else {
+                                launchScheduleActivityOrNot();
+                            }
+                        }
+                    });
                 }
-            });
+                break;
 
-        }
-
-
-        /**
-         * Regarde les SharedPreferences et lance le tuto s'il n'a jamais été lancé. Sinon va sur l'activité des Mails
-         */
-        if (!prefManager.isMailsFirstTimeLaunch() && nameOfActivity.equals("Mails")) {
-            launchMailsActivityOrNot();
-            finish();
-        }
-        if (prefManager.isMailsFirstTimeLaunch() && nameOfActivity.equals("Mails")) {
-
-            // Making notification bar transparent
-            if (Build.VERSION.SDK_INT >= 21) {
-                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-            }
-
-            setContentView(R.layout.activity_tuto);
-
-            viewPager = findViewById(R.id.view_pager);
-            dotsLayout = findViewById(R.id.layoutDots);
-            btnSkip = findViewById(R.id.btn_skip);
-            btnNext = findViewById(R.id.btn_next);
-
-
-            // layouts of all welcome sliders
-            // add few more layouts if you want
-            layouts = new int[]{
-                    R.layout.tuto_mails_slide1,
-                    R.layout.tuto_mails_slide2};
-
-            // adding bottom dots
-            addBottomDots(0);
-
-            // making notification bar transparent
-            changeStatusBarColor();
-
-            myViewPagerAdapter = new MyViewPagerAdapter();
-            viewPager.setAdapter(myViewPagerAdapter);
-            viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
-
-            btnSkip.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+            case "Mails" :
+                if (!prefManager.isMailsFirstTimeLaunch()) {
                     launchMailsActivityOrNot();
                 }
-            });
-
-            btnNext.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // checking for last page
-                    // if last page home screen will be launched
-                    int current = getItem(+1);
-                    if (current < layouts.length) {
-                        // move to next screen
-                        viewPager.setCurrentItem(current);
-                    } else {
-                        launchMailsActivityOrNot();
+                else {
+                    // Making notification bar transparent
+                    if (Build.VERSION.SDK_INT >= 21) {
+                        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
                     }
+
+                    setContentView(R.layout.activity_tuto);
+
+                    viewPager = findViewById(R.id.view_pager);
+                    dotsLayout = findViewById(R.id.layoutDots);
+                    btnSkip = findViewById(R.id.btn_skip);
+                    btnNext = findViewById(R.id.btn_next);
+
+
+                    // layouts of all welcome sliders
+                    // add few more layouts if you want
+                    layouts = new int[]{
+                            R.layout.tuto_mails_slide1,
+                            R.layout.tuto_mails_slide2};
+
+                    // adding bottom dots
+                    addBottomDots(0);
+
+                    // making notification bar transparent
+                    changeStatusBarColor();
+
+                    myViewPagerAdapter = new MyViewPagerAdapter();
+                    viewPager.setAdapter(myViewPagerAdapter);
+                    viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
+
+                    btnSkip.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            launchMailsActivityOrNot();
+                        }
+                    });
+
+                    btnNext.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // checking for last page
+                            // if last page home screen will be launched
+                            int current = getItem(+1);
+                            if (current < layouts.length) {
+                                // move to next screen
+                                viewPager.setCurrentItem(current);
+                            } else {
+                                launchMailsActivityOrNot();
+                            }
+                        }
+                    });
                 }
-            });
+                break;
 
-        }
-
-
-        /**
-         * Regarde les SharedPreferences et lance le tuto s'il n'a jamais été lancé. Sinon va sur l'activité des Resultats
-         */
-        if (!prefManager.isResultsFirstTimeLaunch() && nameOfActivity.equals("Results")) {
-            launchResultsActivityOrNot();
-            finish();
-        }
-        if (prefManager.isResultsFirstTimeLaunch() && nameOfActivity.equals("Results")) {
-
-            // Making notification bar transparent
-            if (Build.VERSION.SDK_INT >= 21) {
-                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-            }
-
-            setContentView(R.layout.activity_tuto);
-
-            viewPager = findViewById(R.id.view_pager);
-            dotsLayout = findViewById(R.id.layoutDots);
-            btnSkip = findViewById(R.id.btn_skip);
-            btnNext = findViewById(R.id.btn_next);
-
-
-            // layouts of all welcome sliders
-            // add few more layouts if you want
-            layouts = new int[]{
-                    R.layout.tuto_result_slide1,
-                    R.layout.tuto_result_slide2,
-                    R.layout.tuto_result_slide3};
-
-            // adding bottom dots
-            addBottomDots(0);
-
-            // making notification bar transparent
-            changeStatusBarColor();
-
-            myViewPagerAdapter = new MyViewPagerAdapter();
-            viewPager.setAdapter(myViewPagerAdapter);
-            viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
-
-            btnSkip.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+            case "Results" :
+                if (!prefManager.isResultsFirstTimeLaunch()) {
                     launchResultsActivityOrNot();
                 }
-            });
-
-            btnNext.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // checking for last page
-                    // if last page home screen will be launched
-                    int current = getItem(+1);
-                    if (current < layouts.length) {
-                        // move to next screen
-                        viewPager.setCurrentItem(current);
-                    } else {
-                        launchResultsActivityOrNot();
+                else {
+                    // Making notification bar transparent
+                    if (Build.VERSION.SDK_INT >= 21) {
+                        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
                     }
+
+                    setContentView(R.layout.activity_tuto);
+
+                    viewPager = findViewById(R.id.view_pager);
+                    dotsLayout = findViewById(R.id.layoutDots);
+                    btnSkip = findViewById(R.id.btn_skip);
+                    btnNext = findViewById(R.id.btn_next);
+
+
+                    // layouts of all welcome sliders
+                    // add few more layouts if you want
+                    layouts = new int[]{
+                            R.layout.tuto_result_slide1,
+                            R.layout.tuto_result_slide2,
+                            R.layout.tuto_result_slide3};
+
+                    // adding bottom dots
+                    addBottomDots(0);
+
+                    // making notification bar transparent
+                    changeStatusBarColor();
+
+                    myViewPagerAdapter = new MyViewPagerAdapter();
+                    viewPager.setAdapter(myViewPagerAdapter);
+                    viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
+
+                    btnSkip.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            launchResultsActivityOrNot();
+                        }
+                    });
+
+                    btnNext.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // checking for last page
+                            // if last page home screen will be launched
+                            int current = getItem(+1);
+                            if (current < layouts.length) {
+                                // move to next screen
+                                viewPager.setCurrentItem(current);
+                            } else {
+                                launchResultsActivityOrNot();
+                            }
+                        }
+                    });
                 }
-            });
+                break;
 
+            case "Messages" :
+                if (!prefManager.isMessagesFirstTimeLaunch()) {
+                    launchMessagesActivityOrNot();
+                }
+                else {
+                    // Making notification bar transparent
+                    if (Build.VERSION.SDK_INT >= 21) {
+                        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+                    }
+
+                    setContentView(R.layout.activity_tuto);
+
+                    viewPager = findViewById(R.id.view_pager);
+                    dotsLayout = findViewById(R.id.layoutDots);
+                    btnSkip = findViewById(R.id.btn_skip);
+                    btnNext = findViewById(R.id.btn_next);
+
+
+                    // layouts of all welcome sliders
+                    // add few more layouts if you want
+                    layouts = new int[]{
+                            R.layout.tuto_result_slide1,
+                            R.layout.tuto_result_slide2,
+                            R.layout.tuto_result_slide3};
+
+                    // adding bottom dots
+                    addBottomDots(0);
+
+                    // making notification bar transparent
+                    changeStatusBarColor();
+
+                    myViewPagerAdapter = new MyViewPagerAdapter();
+                    viewPager.setAdapter(myViewPagerAdapter);
+                    viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
+
+                    btnSkip.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            launchMessagesActivityOrNot();
+                        }
+                    });
+
+                    btnNext.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // checking for last page
+                            // if last page home screen will be launched
+                            int current = getItem(+1);
+                            if (current < layouts.length) {
+                                // move to next screen
+                                viewPager.setCurrentItem(current);
+                            } else {
+                                launchMessagesActivityOrNot();
+                            }
+                        }
+                    });
+                }
+                break;
+            default:
+                finish();
+                break;
         }
-
-
     }
 
     @Override
@@ -344,7 +389,16 @@ public class TutoActivity extends AppCompatActivity {
     }
 
     /**
-     * Lance l'activité qui lui correspond s'il en est autorisé
+     * Launches the activity if the launchActivity variable is set to true. Ends the current activity otherwise.
+     */
+    public void launchMessagesActivityOrNot() {
+        prefManager.setMessagesFirstTimeLaunch(false);
+        if (launchActivity) startActivity(new Intent(TutoActivity.this, MessagesActivity.class));
+        finish();
+    }
+
+    /**
+     * Launches the activity if the launchActivity variable is set to true. Ends the current activity otherwise.
      */
     public void launchResultsActivityOrNot() {
         prefManager.setResultsFirstTimeLaunch(false);
@@ -352,25 +406,47 @@ public class TutoActivity extends AppCompatActivity {
         finish();
     }
 
+    /**
+     * Launches the activity if the launchActivity variable is set to true. Ends the current activity otherwise.
+     */
     public void launchScheduleActivityOrNot() {
         prefManager.setScheduleFirstTimeLaunch(false);
-        if (launchActivity) startActivity(new Intent(TutoActivity.this, Schedule.class));
+        if (launchActivity) startActivity(new Intent(TutoActivity.this, ScheduleActivity.class));
         finish();
     }
 
+    /**
+     * Launches the activity if the launchActivity variable is set to true. Ends the current activity otherwise.
+     */
     public void launchMailsActivityOrNot() {
         prefManager.setMailsFirstTimeLaunch(false);
         if (launchActivity) startActivity(new Intent(TutoActivity.this, MailViewerActivity.class));
         finish();
     }
 
+    /**
+     * Launches the activity if the launchActivity variable is set to true. Ends the current activity otherwise.
+     */
     public void launchNotesActivityOrNot() {
         prefManager.setNotesFirstTimeLaunch(false);
         if (launchActivity) startActivity(new Intent(TutoActivity.this, NotesActivity.class));
         finish();
     }
 
-    //  viewpager change listener
+    /**
+     * Making notification bar transparent
+     */
+    private void changeStatusBarColor() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.TRANSPARENT);
+        }
+    }
+
+    /**
+     * Viewpager change listener
+     */
     ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
 
         @Override
@@ -397,17 +473,6 @@ public class TutoActivity extends AppCompatActivity {
         public void onPageScrollStateChanged(int arg0) {
         }
     };
-
-    /**
-     * Making notification bar transparent
-     */
-    private void changeStatusBarColor() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-        }
-    }
 
     /**
      * View pager adapter

@@ -8,21 +8,21 @@ import android.preference.PreferenceManager;
  * Gère les SharedPreferences
  */
 public class PrefManager {
-    private final SharedPreferences pref_tuto;
-    private final SharedPreferences.Editor editor_tuto;
+    private final SharedPreferences sharedPreferences;
+    private final SharedPreferences.Editor sharedPreferencesEditor;
 
     // Nom des SharedPreferences
-
     private static final String IS_MAILS_FIRST_TIME_LAUNCH = "IsMailsFirstTimeLaunch";
     private static final String IS_SCHEDULE_FIRST_TIME_LAUNCH = "IsScheduleFirstTimeLaunch";
     private static final String IS_NOTES_FIRST_TIME_LAUNCH = "IsNotesFirstTimeLaunch";
     private static final String IS_RESULTS_FIRST_TIME_LAUNCH = "IsResultsFirstTimeLaunch";
+    private static final String IS_MESSAGES_FIRST_TIME_LAUNCH = "IsMessagesFirstTimeLaunch";
 
     public PrefManager(Context context) {
         // shared pref mode
-        pref_tuto = PreferenceManager.getDefaultSharedPreferences(context);
-        editor_tuto = pref_tuto.edit();
-        editor_tuto.apply();
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        sharedPreferencesEditor = sharedPreferences.edit();
+        sharedPreferencesEditor.apply();
     }
 
     /**
@@ -30,12 +30,12 @@ public class PrefManager {
      * @param isFirstTime le boolean du premier lancement
      */
     public void setMailsFirstTimeLaunch(boolean isFirstTime) {
-        editor_tuto.putBoolean(IS_MAILS_FIRST_TIME_LAUNCH, isFirstTime);
-        editor_tuto.commit();
+        sharedPreferencesEditor.putBoolean(IS_MAILS_FIRST_TIME_LAUNCH, isFirstTime);
+        sharedPreferencesEditor.commit();
     }
 
     public boolean isMailsFirstTimeLaunch() {
-        return pref_tuto.getBoolean(IS_MAILS_FIRST_TIME_LAUNCH, true);
+        return sharedPreferences.getBoolean(IS_MAILS_FIRST_TIME_LAUNCH, true);
     }
 
     /**
@@ -43,12 +43,12 @@ public class PrefManager {
      * @param isFirstTime le boolean du premier lancement
      */
     public void setScheduleFirstTimeLaunch(boolean isFirstTime) {
-        editor_tuto.putBoolean(IS_SCHEDULE_FIRST_TIME_LAUNCH, isFirstTime);
-        editor_tuto.commit();
+        sharedPreferencesEditor.putBoolean(IS_SCHEDULE_FIRST_TIME_LAUNCH, isFirstTime);
+        sharedPreferencesEditor.commit();
     }
 
     public boolean isScheduleFirstTimeLaunch() {
-        return pref_tuto.getBoolean(IS_SCHEDULE_FIRST_TIME_LAUNCH, true);
+        return sharedPreferences.getBoolean(IS_SCHEDULE_FIRST_TIME_LAUNCH, true);
     }
 
     /**
@@ -56,12 +56,12 @@ public class PrefManager {
      * @param isFirstTime le boolean du premier lancement
      */
     public void setNotesFirstTimeLaunch(boolean isFirstTime) {
-        editor_tuto.putBoolean(IS_NOTES_FIRST_TIME_LAUNCH, isFirstTime);
-        editor_tuto.commit();
+        sharedPreferencesEditor.putBoolean(IS_NOTES_FIRST_TIME_LAUNCH, isFirstTime);
+        sharedPreferencesEditor.commit();
     }
 
     public boolean isNotesFirstTimeLaunch() {
-        return pref_tuto.getBoolean(IS_NOTES_FIRST_TIME_LAUNCH, true);
+        return sharedPreferences.getBoolean(IS_NOTES_FIRST_TIME_LAUNCH, true);
     }
 
     /**
@@ -69,12 +69,24 @@ public class PrefManager {
      * @param isFirstTime le boolean du premier lancement
      */
     public void setResultsFirstTimeLaunch(boolean isFirstTime) {
-        editor_tuto.putBoolean(IS_RESULTS_FIRST_TIME_LAUNCH, isFirstTime);
-        editor_tuto.commit();
+        sharedPreferencesEditor.putBoolean(IS_RESULTS_FIRST_TIME_LAUNCH, isFirstTime);
+        sharedPreferencesEditor.commit();
     }
 
     public boolean isResultsFirstTimeLaunch() {
-        return pref_tuto.getBoolean(IS_RESULTS_FIRST_TIME_LAUNCH, true);
+        return sharedPreferences.getBoolean(IS_RESULTS_FIRST_TIME_LAUNCH, true);
     }
 
+    /**
+     * Change les SharedPreferences
+     * @param isFirstTime le boolean du premier lancement
+     */
+    public void setMessagesFirstTimeLaunch(boolean isFirstTime) {
+        sharedPreferencesEditor.putBoolean(IS_MESSAGES_FIRST_TIME_LAUNCH, isFirstTime);
+        sharedPreferencesEditor.commit();
+    }
+
+    public boolean isMessagesFirstTimeLaunch() {
+        return sharedPreferences.getBoolean(IS_MESSAGES_FIRST_TIME_LAUNCH, true);
+    }
 }

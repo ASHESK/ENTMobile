@@ -30,7 +30,7 @@
             android:name=".activities.MainMenu"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".schedule.Schedule"
+            android:name=".schedule.ScheduleActivity"
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".mails.MailWriterActivity"
@@ -49,6 +49,9 @@
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".results.ResultsActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".messages.MessagesActivity"
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".activities.TutoActivity"

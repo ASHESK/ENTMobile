@@ -8,7 +8,7 @@
     <string name="modules">Modules</string>
     <string name="links">Links</string>
     <string name="notes">Notes</string>
-    <string name="results">Results</string>
+    <string name="messages">Messages</string>
 
     <!-- Login -->
     <string name="username">Username</string>
@@ -155,5 +155,9 @@
     <string name="tuto_schedule_slide2_title">Jump to any date !</string>
     <string name="tuto_schedule_slide1_title">Navigate day to day !</string>
     <string name="tuto_schedule_slide1_content">Use the arrows to get back to the current day !</string>
+    <string name="messages_count">" messages"</string>
+    <string name="notes_count">" notes"</string>
+    <string name="message_et">" message"</string>
+    <string name="messages_et">" messages"</string>
 
 </resources>
